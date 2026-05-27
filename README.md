@@ -410,3 +410,4 @@ int main(void){
 - Las funciones que crean recursos deben tener una función correspondiente que los libere.
 - `turtleAppCreate` usa memoria dinámica, por eso siempre debe verificarse si retorna `NULL`.
 - `turtleAppDestroy` debe llamarse antes de terminar el programa.
+# marco_figuras
