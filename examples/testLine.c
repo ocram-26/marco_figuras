@@ -5,13 +5,13 @@ void fractalTree(Turtle *turtle, float length, int depth){
         return;
     turtleForward(turtle, length);
 
-    turtleLeft(turtle, 30);
-    fractalTree(turtle, length * 0.7, depth - 1);
+    turtleLeft(turtle, 20);
+    fractalTree(turtle, length * 0.6, depth - 1);
     
-    turtleRight(turtle, 60);
-    fractalTree(turtle, length * 0.7, depth - 1);
+    turtleRight(turtle, 40);
+    fractalTree(turtle, length * 0.6, depth - 1);
 
-    turtleLeft(turtle, 30);
+    turtleLeft(turtle, 20);
     turtleBackward(turtle, length);
 }
 
@@ -30,7 +30,7 @@ int main(void){
   turtleSetColor(t, 255, 100, 0);
   turtleSetSpeed(t, 5.0f);
 
-  fractalTree(t, 100, 3);
+  fractalTree(t, 100, 7);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
