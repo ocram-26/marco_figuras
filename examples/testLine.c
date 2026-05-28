@@ -1,6 +1,6 @@
 #include "../turtlec.h"
 
-void fractalTree(Trutle *turtle, float length, int depth){
+void fractalTree(Turtle *turtle, float length, int depth){
     if(depth == 0 || length < 5)
         return;
     turtleForward(turtle, length);
@@ -8,15 +8,15 @@ void fractalTree(Trutle *turtle, float length, int depth){
     turtleLeft(turtle, 30);
     fractalTree(turtle, length * 0.7, depth - 1);
     
-    turtleLeft(turtle, 30);
+    turtleRight(turtle, 60);
     fractalTree(turtle, length * 0.7, depth - 1);
 
     turtleLeft(turtle, 30);
-    fractalBackward(turtle, length);
+    turtleBackward(turtle, length);
 }
 
 int main(void){
-  TurtleApp *app = turtleAppCreate(400, 200, "Test Line");
+  TurtleApp *app = turtleAppCreate(1200, 800, "Test Line");
 
   if(app == NULL)
     return 1;
@@ -24,12 +24,13 @@ int main(void){
   Turtle *t = turtleAppGetTurtle(app);
 
   turtlePenUp(t);
-  turtleGoTo(t, 50.0f, 100.0f);
+  turtleGoTo(t,300.0f, 400.0f);
   turtlePenDown(t);
 
   turtleSetColor(t, 255, 100, 0);
   turtleSetSpeed(t, 5.0f);
-  turtleForward(t, 300.0f);
+
+  fractalTree(t, 100, 3);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
