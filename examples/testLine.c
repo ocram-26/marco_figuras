@@ -95,6 +95,23 @@ void fractalTreeR3(Turtle *turtle, float length, int depth){
   turtleBackward(turtle, length);
 }
 
+void levyR4(Turtle *turtle, int length, int depth){
+  if(depth == 0){
+    turtleForward(turtle, length);
+    return;
+  }
+  
+  turtleSetColor(turtle, 30 * (depth * 2), 20 * (depth * 3.5), 200 * (depth * 0.2));
+
+  turtleRight(turtle, 45);
+  levy(turtle, length / sqrt(2), depth - 1);
+
+  turtleLeft(turtle, 90);
+  levy(turtle, length / sqrt(2), depth - 1);
+
+  turtleRight(turtle, 45);
+}
+
 int main(void){
   TurtleApp *app = turtleAppCreate(1200, 800, "Test Line");
 
@@ -105,7 +122,7 @@ int main(void){
 
   turtlePenUp(t);
   turtleGoTo(t,500.0f, 600.0f);
-  turtleLeft(t, 90);
+  //turtleLeft(t, 90);
   turtlePenDown(t);
 
   turtleSetColor(t, 30, 10, 210);
@@ -119,7 +136,9 @@ int main(void){
 
   //fractalTreeR2(t, 150, 5);
 
-  fractalTreeR3(t, 150, 7);
+  //fractalTreeR3(t, 150, 7);
+
+  levyR4(t, 150, 3);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
